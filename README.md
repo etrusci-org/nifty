@@ -26,8 +26,8 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 
 ## Language Docs
 
-- <https://php.net/docs.php>
-- <https://docs.python.org>
+- PHP: <https://php.net/docs.php>
+- Python: <https://docs.python.org>
 
 ---
 
