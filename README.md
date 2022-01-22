@@ -20,7 +20,7 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 
 ### python/
 
-- function/[isPrime.php](python/function/isPrime.php)
+- function/[isPrime.py](python/function/isPrime.py)
 
 ---
 
