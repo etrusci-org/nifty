@@ -5,12 +5,3 @@ function dtNow($human=true, $humanFmt='Y-m-d H:i:s e') {
     }
     return date($humanFmt);
 }
-
-
-/* Example:
-
-$now = dtNow();
-
-var_dump($now);
-
-*/

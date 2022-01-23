@@ -18,14 +18,3 @@ def isPrime(n):
         div_cur += 2
 
     return True
-
-
-''' Example:
-
-n = 13
-
-check = isPrime(n)
-
-print(check)
-
-'''

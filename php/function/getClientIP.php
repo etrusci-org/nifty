@@ -13,12 +13,3 @@ function getClientIP() {
     }
     return $ip;
 }
-
-
-/* Example:
-
-$ip = getClientIP();
-
-var_dump($ip);
-
-*/
