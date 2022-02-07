@@ -3,14 +3,14 @@ class WebRouter {
     public $requestSource = 'get+post';
     public $requestKey = 'r';
     public $defaultRoute = array(
-        'time' => NULL,
-        'request'=> NULL,
-        'node' => NULL,
+        'time' => null,
+        'request'=> null,
+        'node' => null,
         'var' => array(),
         'flag' => array(),
     );
 
-    public function parseRoute($array=NULL, $sort=TRUE) {
+    public function parseRoute($array=null, $sort=TRUE) {
         $route = $this->defaultRoute;
         $route['time'] = time();
 
@@ -32,10 +32,10 @@ class WebRouter {
         }
 
         if (!$array) {
-            $request = array_key_exists($this->requestKey, $requestData) ? $requestData[$this->requestKey] : NULL;
+            $request = array_key_exists($this->requestKey, $requestData) ? $requestData[$this->requestKey] : '';
         }
         else {
-            $request = array_key_exists($this->requestKey, $array) ? $array[$this->requestKey] : NULL;
+            $request = array_key_exists($this->requestKey, $array) ? $array[$this->requestKey] : '';
         }
 
         $route['request'] = trim($request);
@@ -46,7 +46,7 @@ class WebRouter {
 
         $dump = explode('/', $request, 2);
 
-        $route['node'] = count($dump) > 0 ? $dump[0] : NULL;
+        $route['node'] = count($dump) > 0 ? $dump[0] : '';
 
         if (count($dump) > 1) {
             $dump = explode('/', $dump[1]);
@@ -66,8 +66,8 @@ class WebRouter {
         }
 
         if ($sort) {
-            asort($route['var']);
-            asort($route['flag']);
+            ksort($route['var']);
+            sort($route['flag']);
         }
 
         // var_dump($route);

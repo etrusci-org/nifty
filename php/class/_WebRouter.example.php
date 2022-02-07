@@ -8,7 +8,7 @@ $autoRoute = $Router->parseRoute();
 var_dump($autoRoute);
 
 $myRoute = array(
-    'r' => 'node/var1:foo/var2:bar/flag1/flag2',
+    'r' => 'node/somevar:helloworld/anothervar:123/moo/cow',
 );
 
 $customRoute = $Router->parseRoute($myRoute);
