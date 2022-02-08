@@ -1,16 +1,32 @@
 <?php
+/**
+ * URL query string parser for the lazy.
+ *
+ * The idea is to provide a syntax for generating and reading your web app routes.
+ * It's hard sometimes doing this with individual query string variables. With this
+ * approach you'll have all the needed data in an array ready to use.
+ *
+ * @example WebRouter.example.php
+ */
 class WebRouter {
     public $requestSource = 'get+post';
     public $requestKey = 'r';
     public $defaultRoute = array(
         'time' => null,
         'request'=> null,
-        'node' => null,
+        'node' => 'index',
         'var' => array(),
         'flag' => array(),
     );
 
-    public function parseRoute($array=null, $sort=TRUE) {
+    /**
+     * Parse current or custom route.
+     *
+     * @param array $array=null  Custom route array.
+     * @param bool $sort=true  Whether to sort the route contents.
+     * @return array  Parsed route.
+     */
+    public function parseRoute(array $array=null, bool $sort=true): array {
         $route = $this->defaultRoute;
         $route['time'] = time();
 

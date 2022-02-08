@@ -1,42 +1,82 @@
 <?php
+/**
+ * SQLite3 wrapper for the lazy.
+ *
+ * @example DatabaseSQLite3.example.php
+ * @see https://php.net/SQLite3
+ */
 class DatabaseSQLite3 {
     protected $dbFile;
     protected $db;
     protected $encryptionKey;
     protected $sqliteVersion;
 
-    public function __construct($dbFile, $encryptionKey='') {
+    /**
+     * Class constructor.
+     *
+     * @param string $dbFile  Path to database file to use.
+     * @param string $encryptionKey  Encryption key if any.
+     * @return void
+     */
+    public function __construct(string $dbFile, string $encryptionKey='') {
         $this->dbFile = $dbFile;
         $this->encryptionKey = $encryptionKey;
         $this->sqliteVersion = SQLite3::version();
     }
 
-    public function open($rw=FALSE) {
-        if (is_object($this->db)) return $this->db;
+    /**
+     * Open the database.
+     *
+     * @param bool $rw=false  Whether to open the database with read+write instead of just read access.
+     * @return bool  True on success.
+     */
+    public function open(bool $rw=false): bool {
+        if ($this->db instanceof SQLite3) return false;
 
         $flag = (!$rw) ? SQLITE3_OPEN_READONLY : SQLITE3_OPEN_READWRITE;
 
         $this->db = new SQLite3($this->dbFile, $flag, $this->encryptionKey);
+
+        if (!($this->db instanceof SQLite3)) return false;
+
+        return true;
     }
 
-    public function close() {
-        if (!is_object($this->db)) return FALSE;
+    /**
+     * Close the database.
+     *
+     * @return bool  True on success.
+     */
+    public function close(): bool {
+        if (!($this->db instanceof SQLite3)) return false;
 
         $this->db->close();
+
+        return true;
     }
 
-    public function query($query, $values=array()) {
-        if (!is_object($this->db)) return FALSE;
+    /**
+     * Query the database.
+     *
+     * @param string $query  Query to execute.
+     * @param array $values=array()  Query values.
+     * @return array|bool  Query results or false on failure.
+     */
+    public function query(string $query, array $values=array()): array|bool {
+        if (!($this->db instanceof SQLite3)) return false;
 
         $stmt = $this->db->prepare($query);
+        if (!$stmt) return false;
+
         foreach ($values as $v) {
             $stmt->bindValue($v[0], $v[1], $v[2]);
         }
 
         $result = $stmt->execute();
+        if (!$result) return false;
 
         $dump = array();
-        while ($row = $result->fetchArray(TRUE)) {
+        while ($row = $result->fetchArray(true)) {
             $dump[] = $row;
         }
 
@@ -45,22 +85,38 @@ class DatabaseSQLite3 {
         return $dump;
     }
 
-    public function querySingle($query, $values=array()) {
-        if (!is_object($this->db)) return FALSE;
+    /**
+     * Query the database for a single result.
+     *
+     * @param string $query  Query to execute.
+     * @param array $values=array()  Query values.
+     * @return array|bool  Query result.
+     */
+    public function querySingle(string $query, array $values=array()): array|bool {
+        if (!($this->db instanceof SQLite3)) return false;
 
         $result = $this->query($query, $values);
 
-        if (count($result) < 1) {
-            return array();
+        if (!$result || count($result) < 1) {
+            return false;
         }
 
         return $result[0];
     }
 
-    public function write($query, $values=array()) {
-        if (!is_object($this->db)) return FALSE;
+    /**
+     * Create, update or delete database data.
+     *
+     * @param string $query  Query to execute.
+     * @param array $values=array()  Query values.
+     * @return SQLite3Result|bool  SQLite3Result object or false on failure.
+     */
+    public function write(string $query, array $values=array()): SQLite3Result|bool {
+        if (!($this->db instanceof SQLite3)) return false;
 
         $stmt = $this->db->prepare($query);
+
+        if (!$stmt) return false;
 
         foreach ($values as $v) {
             $stmt->bindValue($v[0], $v[1], $v[2]);
