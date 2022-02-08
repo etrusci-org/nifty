@@ -2,7 +2,7 @@
 require __DIR__.'/DatabaseSQLite3.php';
 
 // Using :memory: as database file for demonstration.
-// You should point to a SQLite3 database file.
+// You would most probably point to a SQLite3 database file.
 
 $db = new DatabaseSQLite3(':memory:');
 
@@ -24,3 +24,19 @@ $r = $db->query($q, $v);
 $db->close();
 
 var_dump($r);
+// array(2) {
+//     [0]=>
+//     array(2) {
+//       ["id"]=>
+//       int(2)
+//       ["birthyear"]=>
+//       int(1980)
+//     }
+//     [1]=>
+//     array(2) {
+//       ["id"]=>
+//       int(3)
+//       ["birthyear"]=>
+//       int(1981)
+//     }
+//   }

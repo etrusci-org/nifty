@@ -1,20 +1,32 @@
-def isPrime(n):
-    ''' Note that this checks with trial division and is thus very slow on large numbers.
-    '''
-    if n < 2:
+def isPrime(num):
+    """Test a number for primality.
+
+    Note that this checks with trial division and is thus very slow on large numbers.
+
+    Args:
+        num (integer): Number to test.
+
+    Returns:
+        boolean: True if prime.
+
+    Example: isPrime.example.py
+    See: https://en.wikipedia.org/wiki/Prime_numbers
+    """
+
+    if num < 2:
         return False
 
-    if n == 2:
+    if num == 2:
         return True
 
-    if n % 2 == 0:
+    if num % 2 == 0:
         return False
 
-    div_last = int(n ** 0.5) + 1
-    div_cur  = 3
-    while div_cur <= div_last:
-        if n % div_cur == 0:
+    divLast = int(num ** 0.5) + 1
+    divCurrent = 3
+    while divCurrent <= divLast:
+        if num % divCurrent == 0:
             return False
-        div_cur += 2
+        divCurrent += 2
 
     return True
