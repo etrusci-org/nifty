@@ -8,9 +8,9 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 
 - php / class / [DatabaseSQLite3.php](php/class/DatabaseSQLite3.php)
 - php / class / [WebRouter.php](php/class/WebRouter.php)
+- php / function / [clientIP.php](php/function/clientIP.php)
 - php / function / [dtNow.php](php/function/dtNow.php)
 - php / function / [filemtimeHash.php](php/function/filemtimeHash.php)
-- php / function / [getClientIP.php](php/function/getClientIP.php)
 - php / function / [hsc5.php](php/function/hsc5.php)
 - php / function / [hsc5print.php](php/function/hsc5print.php)
 - php / function / [jdec.php](php/function/jdec.php)
