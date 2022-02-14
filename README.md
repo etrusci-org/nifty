@@ -6,11 +6,11 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 
 ## Code
 
-- js / function / [lucky.js](javascript/function/lucky.js)
-- js / function / [randomArrayItem.js](javascript/function/randomArrayItem.js)
-- js / function / [randomArrayKey.js](javascript/function/randomArrayKey.js)
-- js / function / [randomInteger.js](javascript/function/randomInteger.js)
-- js / function / [secToDHMS.js](javascript/function/secToDHMS.js)
+- javascript / function / [lucky.js](javascript/function/lucky.js)
+- javascript / function / [randomArrayItem.js](javascript/function/randomArrayItem.js)
+- javascript / function / [randomArrayKey.js](javascript/function/randomArrayKey.js)
+- javascript / function / [randomInteger.js](javascript/function/randomInteger.js)
+- javascript / function / [secToDHMS.js](javascript/function/secToDHMS.js)
 - php / class / [DatabaseSQLite3.php](php/class/DatabaseSQLite3.php)
 - php / class / [WebRouter.php](php/class/WebRouter.php)
 - php / function / [clientIP.php](php/function/clientIP.php)
