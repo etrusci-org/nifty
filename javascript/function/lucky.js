@@ -1,4 +1,5 @@
 // @ts-check
+'use strict'
 
 /**
  * Float representing the chance to be lucky.

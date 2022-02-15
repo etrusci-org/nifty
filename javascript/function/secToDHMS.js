@@ -1,4 +1,5 @@
 // @ts-check
+'use strict'
 
 /**
  * Convert seconds to a human readable duration format.

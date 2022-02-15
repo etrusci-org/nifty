@@ -1,4 +1,5 @@
 // @ts-check
+'use strict'
 
 /**
  * Get a random numeric array key.

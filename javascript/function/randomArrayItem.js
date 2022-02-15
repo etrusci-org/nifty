@@ -1,4 +1,5 @@
 // @ts-check
+'use strict'
 
 /**
  * Get a random item from an array.
