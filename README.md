@@ -19,6 +19,7 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 
 - class / [DatabaseSQLite3.php](php/class/DatabaseSQLite3.php)
 - class / [WebRouter.php](php/class/WebRouter.php)
+- function / [addDurations.php](php/function/addDurations.php)
 - function / [clientIP.php](php/function/clientIP.php)
 - function / [dtNow.php](php/function/dtNow.php)
 - function / [filemtimeHash.php](php/function/filemtimeHash.php)
