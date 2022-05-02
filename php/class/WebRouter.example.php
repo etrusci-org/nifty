@@ -9,7 +9,7 @@ $customRoute = array(
 );
 
 $customRoute = $Router->parseRoute($customRoute);
-print('<pre>');
+
 var_dump($autoRoute);
 // array(5) {
 //     ["time"]=>
