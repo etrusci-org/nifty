@@ -62,19 +62,24 @@ class WebRouter {
 
         $dump = explode('/', $request, 2);
 
-        $route['node'] = count($dump) > 0 ? $dump[0] : '';
+        $route['node'] = count($dump) > 0 ? trim($dump[0]) : '';
 
         if (count($dump) > 1) {
             $dump = explode('/', $dump[1]);
             foreach ($dump as $v) {
+                $v = trim($v);
                 if (stristr($v, ':')) {
                     $v = explode(':', $v);
-                    if (count($v) == 2 && !empty($v[0]) && !empty($v[1])) {
-                        $route['var'][$v[0]] = $v[1];
+                    if (count($v) == 2) {
+                        $v[0] = trim($v[0]);
+                        $v[1] = trim($v[1]);
+                        if (!empty($v[0]) && !empty($v[1]) && !array_key_exists($v[0], $route['var'])) {
+                            $route['var'][$v[0]] = $v[1];
+                        }
                     }
                 }
                 else {
-                    if (!empty($v)) {
+                    if (!empty($v) && !in_array($v, $route['flag'])) {
                         $route['flag'][] = $v;
                     }
                 }
