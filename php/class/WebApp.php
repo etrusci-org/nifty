@@ -8,11 +8,11 @@ declare(strict_types=1);
  * @example WebApp.example/
  */
 class WebApp {
-    protected DatabaseSQLite3 $DB;
-    protected WebRouter $Router;
-    protected array $conf;
-    protected array $route;
-    protected string $cacheID;
+    public DatabaseSQLite3 $DB;
+    public WebRouter $Router;
+    public array $conf;
+    public array $route;
+    public string $cacheID;
 
 
     /**
@@ -76,7 +76,7 @@ class WebApp {
     }
 
 
-    protected function currentCacheID(): string {
+    public function currentCacheID(): string {
         $requestHash = array();
         $requestHash[] = $this->route['node'];
         foreach ($this->route['var'] as $k => $v) {
@@ -87,7 +87,7 @@ class WebApp {
     }
 
 
-    protected function routeURL(string $request = ''): string {
+    public function routeURL(string $request = ''): string {
         if ($this->conf['rewriteURL']) {
             return $request;
         }
