@@ -18,6 +18,7 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 ### PHP
 
 - class / [DatabaseSQLite3.php](php/class/DatabaseSQLite3.php)
+- class / [WebApp.php](php/class/WebApp.php)
 - class / [WebRouter.php](php/class/WebRouter.php)
 - function / [addDurations.php](php/function/addDurations.php)
 - function / [clientIP.php](php/function/clientIP.php)
