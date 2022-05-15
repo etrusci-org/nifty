@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+
 /**
  * SQLite3 wrapper for the lazy.
  *
@@ -76,7 +79,7 @@ class DatabaseSQLite3 {
         if (!$result) return false;
 
         $dump = array();
-        while ($row = $result->fetchArray(true)) {
+        while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
             $dump[] = $row;
         }
 

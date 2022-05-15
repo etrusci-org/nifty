@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+
 /**
  * Get hash value of file modification time.
  *
@@ -12,5 +15,5 @@
  * @see https://php.net/filemtime
  */
 function filemtimeHash(string $file, string $algo='ripemd160'): string {
-    return hash($algo, filemtime($file));
+    return hash($algo, strval(filemtime($file)));
 }
