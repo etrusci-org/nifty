@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+
 /**
  * Join parts of a path to a new path using the operating system directory separator.
  *

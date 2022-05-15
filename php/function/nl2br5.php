@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+
 /**
  * Insert HTML5 line breaks before all newlines.
  *

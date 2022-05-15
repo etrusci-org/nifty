@@ -1,4 +1,7 @@
 <?php
+declare(strict_types=1);
+
+
 /**
  * Convert HTML5 special characters to HTML entities and print the converted HTML.
  *
