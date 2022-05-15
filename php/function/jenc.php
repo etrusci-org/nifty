@@ -11,5 +11,6 @@
  * @see https://php.net/manual/json.constants.php
  */
 function jenc(mixed $data, int $flags=JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT): string|bool {
+    if (!$data) return false;
     return json_encode($data, $flags);
 }
