@@ -5,10 +5,8 @@
  * @param {string} [sep='/']  Path separator.
  * @param {boolean} [ignoreTrailingSep=true]  Whether to ignore a trailing path separator.
  * @returns {string}  Trailing name component.
- *
- * @example pathBasename.example.html
  */
-function pathBasename(path: string, sep: string = '/', ignoreTrailingSep: boolean = true): string {
+export function pathBasename(path: string, sep: string = '/', ignoreTrailingSep: boolean = true): string {
     if (ignoreTrailingSep && path.endsWith(sep)) {
         path = path.slice(0, -1)
     }
