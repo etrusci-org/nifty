@@ -14,4 +14,4 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 
 ## License
 
-Public Domain Worldwide
+All code - **Public Domain Worldwide**
