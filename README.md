@@ -1,6 +1,6 @@
 # nifty
 
-Nifty code I re-use often. Nothing too fancy. I'm just lazy.
+Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
 ---
 
