@@ -32,7 +32,7 @@
             "label": "tsc-watch",
             // The task will launch a shell
             "type": "shell",
-            "command": "./tool/tsc-watch.cmd",
+            "command": "./tsc-watch.cmd",
             // Set the shell type
             "options": {
                 "shell": {

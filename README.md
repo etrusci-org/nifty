@@ -9,6 +9,7 @@ Nifty code I re-use often. Nothing too fancy. I'm just lazy.
 - JavaScript: <https://developer.mozilla.org/javascript>
 - PHP: <https://php.net/manual>
 - Python: <https://docs.python.org>
+- TypeScript: <https://www.typescriptlang.org/docs/>
 
 ---
 

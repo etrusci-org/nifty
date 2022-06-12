@@ -1,3 +1,6 @@
 *.code-workspace
 __pycache__/
 0000/
+*/test.*
+*/package.json
+.bak

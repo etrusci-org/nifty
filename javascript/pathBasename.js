@@ -4,7 +4,7 @@
  * @param {string} path  Path to parse.
  * @param {string} [sep='/']  Path separator.
  * @param {boolean} [ignoreTrailingSep=true]  Whether to ignore a trailing path separator.
- * @returns {string}  Trailing name component.
+ * @returns {string}  Trailing path name component.
  */
 export function pathBasename(path, sep = '/', ignoreTrailingSep = true) {
     if (ignoreTrailingSep && path.endsWith(sep)) {
