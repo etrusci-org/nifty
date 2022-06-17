@@ -5,6 +5,5 @@
  * @returns {string}  Filename extension or original filename if no dot in string.
  */
 export function fileExt(filename) {
-    let ext = filename.split('.').pop();
-    return ext || filename;
+    return filename.split('.').pop() || filename;
 }
