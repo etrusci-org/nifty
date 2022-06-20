@@ -84,6 +84,11 @@ export const LazyMedia = {
                             if (audioType) {
                                 e2.setAttribute('type', audioType);
                             }
+                            if (!code.noAudioLabel) {
+                                let e3 = this.createDefaultElement('label');
+                                e3.innerText = code.slug.split('/').pop() || code.slug;
+                                node.insertAdjacentElement('beforebegin', e3);
+                            }
                             e.appendChild(e2);
                         }
                         // video
@@ -205,8 +210,10 @@ export const LazyMedia = {
         all:
             - attribute
             - dataset
-        link:
+        generic link:
             - text
+        generic audio:
+            - noAudioLabel
         bandcamp:
             - trackCount
 

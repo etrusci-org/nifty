@@ -101,6 +101,12 @@ export const LazyMedia: LazyMediaInterface = {
                                 e2.setAttribute('type', audioType)
                             }
 
+                            if (!code.noAudioLabel) {
+                                let e3 = this.createDefaultElement('label')
+                                e3.innerText = code.slug.split('/').pop() || code.slug
+                                node.insertAdjacentElement('beforebegin', e3)
+                            }
+
                             e.appendChild(e2)
                         }
 
@@ -278,6 +284,7 @@ type lazyCodeType = {
     dataset?: [string, string][]
     text?: string
     trackCount?: number
+    noAudioLabel?: boolean
 } | null
 
 
@@ -295,8 +302,10 @@ type lazyCodeType = {
         all:
             - attribute
             - dataset
-        link:
+        generic link:
             - text
+        generic audio:
+            - noAudioLabel
         bandcamp:
             - trackCount
 
