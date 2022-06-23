@@ -47,7 +47,7 @@ export const LazyMedia = {
                     }
                 }
                 catch (error) {
-                    console.error('bad code:', node.innerHTML, 'in node:', node, 'error:', error);
+                    console.error('bad code:', node.innerHTML, 'in node:', node, 'error message:', error);
                 }
                 if (code) {
                     // ----- CREATE BASIC ELEMENT DEPENDING ON PLATFORM AND TYPE -----
@@ -153,6 +153,7 @@ export const LazyMedia = {
                     }
                     // ----- POST PROCESS CREATED ELEMENT -----
                     if (e) {
+                        e.classList.add(code.platform, code.type);
                         // attribute
                         if (code.attribute) {
                             for (const [k, v] of code.attribute) {
@@ -171,7 +172,7 @@ export const LazyMedia = {
                             }
                         }
                         // EMBED FINAL THING
-                        console.debug('[lazymedia]', 'code:', node.innerHTML, 'element:', e);
+                        console.debug('[lazymedia]', 'code:', node.innerHTML, 'baked element:', e);
                         node.replaceWith(e);
                     }
                 }
