@@ -13,9 +13,6 @@ export const LazyMedia = {
         youtubeVideo: '//youtube.com/embed/{SLUG}?modestbranding=1&rel=0',
         youtubePlaylist: '//youtube.com/embed/videoseries?list={SLUG}&modestbranding=1&rel=0',
     },
-    supportsText: [
-        'link',
-    ],
     bandcampAlbumHeight: {
         header: 120,
         trackRow: 33,
@@ -100,10 +97,6 @@ export const LazyMedia = {
                     }
                 }
             }
-            // add text if element supports it
-            if (code.text && this.supportsText.indexOf(code.type) > -1) {
-                e.innerHTML = code.text;
-            }
         }
         return e;
     },
@@ -111,7 +104,12 @@ export const LazyMedia = {
         var _a;
         let e = document.createElement('a');
         e.setAttribute('href', this.slugTpl.link.replace('{SLUG}', code.slug.replace('&amp;', '&'))); // FIXME: how to prevent `&` being transformed to `&amp;` for the href attribute without using replace()
-        e.innerHTML = this.slugTpl.link.replace('{SLUG}', ((_a = code.slug.split('//').pop()) === null || _a === void 0 ? void 0 : _a.split('/')[0]) || code.slug);
+        if (code.text) {
+            e.innerHTML = code.text;
+        }
+        else {
+            e.innerHTML = this.slugTpl.link.replace('{SLUG}', ((_a = code.slug.split('//').pop()) === null || _a === void 0 ? void 0 : _a.split('/')[0]) || code.slug);
+        }
         return e;
     },
     bakeImage(code) {
@@ -158,8 +156,8 @@ export const LazyMedia = {
         let e = document.createElement('iframe');
         e.setAttribute('loading', 'lazy');
         e.setAttribute('src', this.slugTpl.bandcampAlbum.replace('{SLUG}', code.slug));
-        if (code.bandcampTrackCount) {
-            e.style.height = `${Math.round(this.bandcampAlbumHeight.header + (this.bandcampAlbumHeight.trackRow * code.bandcampTrackCount) + this.bandcampAlbumHeight.bottomBar)}px`;
+        if (code.trackCount) {
+            e.style.height = `${Math.round(this.bandcampAlbumHeight.header + (this.bandcampAlbumHeight.trackRow * code.trackCount) + this.bandcampAlbumHeight.bottomBar)}px`;
         }
         return e;
     },
@@ -177,6 +175,8 @@ export const LazyMedia = {
     },
     bakeYoutubeVideo(code) {
         let e = document.createElement('iframe');
+        if (code.timeStart)
+            this.slugTpl.youtubeVideo = `${this.slugTpl.youtubeVideo}&start=${code.timeStart}`;
         e.setAttribute('loading', 'lazy');
         e.setAttribute('src', this.slugTpl.youtubeVideo.replace('{SLUG}', code.slug));
         e.setAttribute('allowfullscreen', 'allowfullscreen'); // because allow=fullscreen is still WD
@@ -216,22 +216,5 @@ export const LazyMedia = {
             videoType = 'video/ogg';
         }
         return videoType;
-    },
-    logSettings() {
-        console.log(`(${typeof (LazyMedia.selector)}) .selector:`, LazyMedia.selector);
-        console.log(`.slugTpl.link (${typeof (LazyMedia.slugTpl.link)}):`, LazyMedia.slugTpl.link);
-        console.log(`.slugTpl.image (${typeof (LazyMedia.slugTpl.image)}):`, LazyMedia.slugTpl.image);
-        console.log(`.slugTpl.audio (${typeof (LazyMedia.slugTpl.audio)}):`, LazyMedia.slugTpl.audio);
-        console.log(`.slugTpl.video (${typeof (LazyMedia.slugTpl.video)}):`, LazyMedia.slugTpl.video);
-        console.log(`.slugTpl.bandcampTrack (${typeof (LazyMedia.slugTpl.bandcampTrack)}):`, LazyMedia.slugTpl.bandcampTrack);
-        console.log(`.slugTpl.bandcampAlbum (${typeof (LazyMedia.slugTpl.bandcampAlbum)}):`, LazyMedia.slugTpl.bandcampAlbum);
-        console.log(`.slugTpl.mixcloudMix (${typeof (LazyMedia.slugTpl.mixcloudMix)}):`, LazyMedia.slugTpl.mixcloudMix);
-        console.log(`.slugTpl.mixcloudPlaylist (${typeof (LazyMedia.slugTpl.mixcloudPlaylist)}):`, LazyMedia.slugTpl.mixcloudPlaylist);
-        console.log(`.slugTpl.youtubeVideo (${typeof (LazyMedia.slugTpl.youtubeVideo)}):`, LazyMedia.slugTpl.youtubeVideo);
-        console.log(`.slugTpl.youtubePlaylist (${typeof (LazyMedia.slugTpl.youtubePlaylist)}):`, LazyMedia.slugTpl.youtubePlaylist);
-        console.log(`.supportsText (${typeof (LazyMedia.supportsText)}):`, LazyMedia.supportsText);
-        console.log(`.bandcampAlbumHeight.header (${typeof (LazyMedia.bandcampAlbumHeight.header)}):`, LazyMedia.bandcampAlbumHeight.header);
-        console.log(`.bandcampAlbumHeight.trackRow (${typeof (LazyMedia.bandcampAlbumHeight.trackRow)}):`, LazyMedia.bandcampAlbumHeight.trackRow);
-        console.log(`.bandcampAlbumHeight.bottomBar (${typeof (LazyMedia.bandcampAlbumHeight.bottomBar)}):`, LazyMedia.bandcampAlbumHeight.bottomBar);
     },
 };
