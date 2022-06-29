@@ -164,7 +164,7 @@ export const LazyMedia: LazyMediaInterface = {
             e.innerHTML = code.text
         }
         else {
-            e.innerHTML = this.slugTpl.link.replace('{SLUG}', code.slug.split('//').pop()?.split('/')[0] || code.slug)
+            e.innerHTML = this.slugTpl.link.replace('{SLUG}', code.slug.split('//').pop() || code.slug)
         }
 
         return e

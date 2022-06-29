@@ -101,14 +101,13 @@ export const LazyMedia = {
         return e;
     },
     bakeLink(code) {
-        var _a;
         let e = document.createElement('a');
         e.setAttribute('href', this.slugTpl.link.replace('{SLUG}', code.slug.replace('&amp;', '&'))); // FIXME: how to prevent `&` being transformed to `&amp;` for the href attribute without using replace()
         if (code.text) {
             e.innerHTML = code.text;
         }
         else {
-            e.innerHTML = this.slugTpl.link.replace('{SLUG}', ((_a = code.slug.split('//').pop()) === null || _a === void 0 ? void 0 : _a.split('/')[0]) || code.slug);
+            e.innerHTML = this.slugTpl.link.replace('{SLUG}', code.slug.split('//').pop() || code.slug);
         }
         return e;
     },
