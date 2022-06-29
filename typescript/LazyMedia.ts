@@ -1,4 +1,5 @@
 interface LazyMediaInterface {
+    debug: boolean
     selector: string
     slugTpl: {
         link: string
@@ -12,7 +13,7 @@ interface LazyMediaInterface {
         youtubeVideo: string
         youtubePlaylist: string
     }
-    supportsInnerHTML: string[]
+    supportsText: string[]
     bandcampAlbumHeight: {
         header: number,
         trackRow: number,
@@ -41,7 +42,7 @@ type lazyCodeType = {
     slug: string
     attr?: [string, string | false ][]
     data?: [string, string | false ][]
-    innerHTML?: string
+    text?: string
     bandcampTrackCount?: number
 }
 
@@ -49,6 +50,8 @@ type lazyCodeType = {
 
 
 export const LazyMedia: LazyMediaInterface = {
+    debug: false,
+
     selector: '.lazycode', // due to my incompetence, this has to be a class for now
 
     slugTpl: {
@@ -64,7 +67,7 @@ export const LazyMedia: LazyMediaInterface = {
         youtubePlaylist: '//youtube.com/embed/videoseries?list={SLUG}&modestbranding=1&rel=0',
     },
 
-    supportsInnerHTML: [
+    supportsText: [
         'link',
     ],
 
@@ -75,62 +78,61 @@ export const LazyMedia: LazyMediaInterface = {
     },
 
     embed() {
-        let nodes = document.querySelectorAll(this.selector)
+        if (this.debug) console.group('LazyMedia')
 
-        nodes.forEach(node => {
-            if (node instanceof HTMLElement) {
+        let targetNodes = document.querySelectorAll(this.selector)
+
+        targetNodes.forEach(targetNode => {
+            if (targetNode instanceof HTMLElement) {
                 try {
-                    let code: lazyCodeType = JSON.parse(node.innerHTML)
-                    let e = this.bake(code, node)
+                    let code: lazyCodeType = JSON.parse(targetNode.innerHTML)
+                    let e = this.bake(code, targetNode)
 
                     if (e) {
-                        node.replaceWith(e)
+                        if (this.debug) console.debug('targetNode:', targetNode, '\nlazycode:', code, '\nbaked element:', e)
+                        targetNode.replaceWith(e)
                     }
                 }
                 catch (error) {
-                    console.error('boo\ncode:', node.innerHTML.trim(), '\n\nnode:', node, '\n\nerror message:', error)
+                    console.error('BOO!\n\ncode:', targetNode.innerHTML.trim(), '\n\ntargetNode:', targetNode, '\n\nerror message:', error)
                 }
             }
         })
+
+        if (this.debug) console.groupEnd()
     },
 
     bake(code, targetNode) {
         let e = null
 
-        // LINK
         if (code.type == 'link') e = this.bakeLink(code)
-
-        // IMAGE
         if (code.type == 'image') e = this.bakeImage(code)
-
-        // AUDIO
         if (code.type == 'audio') e = this.bakeAudio(code)
-
-        // VIDEO
         if (code.type == 'video') e = this.bakeVideo(code)
-
-        // BANDCAMP
         if (code.type == 'bandcampTrack') e = this.bakeBandcampTrack(code)
         if (code.type == 'bandcampAlbum') e = this.bakeBandcampAlbum(code)
-
-        // MIXCLOUD
         if (code.type == 'mixcloudMix') e = this.bakeMixcloudMix(code)
         if (code.type == 'mixcloudPlaylist') e = this.bakeMixcloudPlaylist(code)
-
-        // YOUTUBE
         if (code.type == 'youtubeVideo') e = this.bakeYoutubeVideo(code)
         if (code.type == 'youtubePlaylist') e = this.bakeYoutubePlaylist(code)
 
-        // POST-PROCESS
+        // post process baked elements
         if (e) {
-            // remove selector css class from targetNode so we don't merge it below
-            // FIXME: if it's not a class or id (which it shouldn't be) then substring(1) won't do much
-            targetNode.classList.remove(this.selector.substring(1))
+            // keep existing css classes
+            e.classList.add(...targetNode.classList)
 
-            // add helper css classes while keeping exiting ones from targetNode
-            e.classList.add('lazymedia', code.type, ...targetNode.classList)
+            // remove selector css class
+            e.classList.remove(this.selector.substring(1))
 
-            // process attributes
+            // add helper css classes
+            e.classList.add('lazymedia', code.type)
+
+            // keep existing dataset
+            for (const k in targetNode.dataset) {
+                e.dataset[k] = targetNode.dataset[k]
+            }
+
+            // add/remove attributes
             if (code.attr) {
                 for (const [k, v] of code.attr) {
                     if (v !== false) {
@@ -142,7 +144,7 @@ export const LazyMedia: LazyMediaInterface = {
                 }
             }
 
-            // process dataset
+            // add/remove dataset entries
             if (code.data) {
                 for (const [k, v] of code.data) {
                     if (v !== false) {
@@ -154,9 +156,9 @@ export const LazyMedia: LazyMediaInterface = {
                 }
             }
 
-            // add custom innerHTML if any and type supports it
-            if (code.innerHTML && this.supportsInnerHTML.indexOf(code.type) > -1) {
-                e.innerHTML = code.innerHTML
+            // add text if element supports it
+            if (code.text && this.supportsText.indexOf(code.type) > -1) {
+                e.innerHTML = code.text
             }
         }
 
@@ -318,7 +320,6 @@ export const LazyMedia: LazyMediaInterface = {
     },
 
     logSettings() {
-        console.group('LazyMedia')
         console.log(`(${typeof(LazyMedia.selector)}) .selector:`, LazyMedia.selector)
         console.log(`.slugTpl.link (${typeof(LazyMedia.slugTpl.link)}):`, LazyMedia.slugTpl.link)
         console.log(`.slugTpl.image (${typeof(LazyMedia.slugTpl.image)}):`, LazyMedia.slugTpl.image)
@@ -330,10 +331,9 @@ export const LazyMedia: LazyMediaInterface = {
         console.log(`.slugTpl.mixcloudPlaylist (${typeof(LazyMedia.slugTpl.mixcloudPlaylist)}):`, LazyMedia.slugTpl.mixcloudPlaylist)
         console.log(`.slugTpl.youtubeVideo (${typeof(LazyMedia.slugTpl.youtubeVideo)}):`, LazyMedia.slugTpl.youtubeVideo)
         console.log(`.slugTpl.youtubePlaylist (${typeof(LazyMedia.slugTpl.youtubePlaylist)}):`, LazyMedia.slugTpl.youtubePlaylist)
-        console.log(`.supportsInnerHTML (${typeof(LazyMedia.supportsInnerHTML)}):`, LazyMedia.supportsInnerHTML)
+        console.log(`.supportsText (${typeof(LazyMedia.supportsText)}):`, LazyMedia.supportsText)
         console.log(`.bandcampAlbumHeight.header (${typeof(LazyMedia.bandcampAlbumHeight.header)}):`, LazyMedia.bandcampAlbumHeight.header)
         console.log(`.bandcampAlbumHeight.trackRow (${typeof(LazyMedia.bandcampAlbumHeight.trackRow)}):`, LazyMedia.bandcampAlbumHeight.trackRow)
         console.log(`.bandcampAlbumHeight.bottomBar (${typeof(LazyMedia.bandcampAlbumHeight.bottomBar)}):`, LazyMedia.bandcampAlbumHeight.bottomBar)
-        console.groupEnd()
     },
 }
