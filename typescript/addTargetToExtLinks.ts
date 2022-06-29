@@ -5,7 +5,7 @@
  * @param {string} [cssClass='external-link']  CSS class to add to the anchor.
  * @returns {void}
  */
- export function addTargetToExtLinks(target: string = '_blank', cssClass: string = 'external-link'): void {
+export function addTargetToExtLinks(target: string = '_blank', cssClass: string = 'external-link'): void {
     let anchors = document.querySelectorAll('a')
     anchors.forEach(e => {
         if (e.hostname && document.location.hostname != e.hostname) {
