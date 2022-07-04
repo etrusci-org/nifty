@@ -11,7 +11,7 @@
     },
     "tasks": [
         {
-            "label": "Create terminals",
+            "label": "nifty build",
             "dependsOn": [
                 "tsc-watch",
                 // "sass-watch",
