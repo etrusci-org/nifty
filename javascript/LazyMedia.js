@@ -2,17 +2,35 @@ export const LazyMedia = {
     debug: false,
     selector: '.lazycode',
     slugTpl: {
+        /* brain for docs:
+
+        bandcamp
+            track slug: <track_id>
+            album slug: <album_id>
+
+        mixcloud
+            mix slug: /<profile>/<show>/
+            playlist slug: /<profile>/playlists/<playlist>/
+
+        youtube
+            video slug: <video_id>
+            playlist slug: <playlist_id>
+
+        twitch
+            stream slug: <channel>&parent=<your_domain>
+            chat slug: <channel>/chat?[darkpopout&]parent=<your_domain>
+        */
         link: '{SLUG}',
         image: '{SLUG}',
         audio: '{SLUG}',
         video: '{SLUG}',
-        bandcampTrack: '//bandcamp.com/EmbeddedPlayer/track={SLUG}/size=large/artwork=none/bgcol=ffffff/linkcol=0687f5/tracklist=false/transparent=true/',
-        bandcampAlbum: '//bandcamp.com/EmbeddedPlayer/album={SLUG}/size=large/artwork=none/bgcol=ffffff/linkcol=0687f5/tracklist=true/transparent=true/',
+        bandcampTrack: '//bandcamp.com/EmbeddedPlayer/track={SLUG}/size=large/artwork=none/bgcol=2b2b2b/linkcol=cccccc/tracklist=false/transparent=true/',
+        bandcampAlbum: '//bandcamp.com/EmbeddedPlayer/album={SLUG}/size=large/artwork=none/bgcol=2b2b2b/linkcol=cccccc/tracklist=true/transparent=true/',
         mixcloudMix: '//mixcloud.com/widget/iframe/?feed={SLUG}&hide_cover=1',
         mixcloudPlaylist: '//mixcloud.com/widget/iframe/?feed={SLUG}&hide_cover=1',
-        youtubeVideo: '//youtube.com/embed/{SLUG}?modestbranding=1&rel=0',
-        youtubePlaylist: '//youtube.com/embed/videoseries?list={SLUG}&modestbranding=1&rel=0',
-        twitchStream: '//player.twitch.tv/?channel={SLUG}&muted=false&autoplay=true',
+        youtubeVideo: '//youtube.com/embed/{SLUG}?modestbranding=1&rel=0&widget_referrer=example.org',
+        youtubePlaylist: '//youtube.com/embed/videoseries?list={SLUG}&modestbranding=1&rel=0&widget_referrer=example.org',
+        twitchStream: '//player.twitch.tv/?muted=false&autoplay=true&channel={SLUG}',
         twitchChat: '//twitch.tv/embed/{SLUG}',
     },
     bandcampAlbumHeight: {
@@ -161,7 +179,7 @@ export const LazyMedia = {
         let e = document.createElement('iframe');
         e.setAttribute('loading', 'lazy');
         e.setAttribute('src', this.slugTpl.bandcampAlbum.replace('{SLUG}', code.slug));
-        if (code.trackCount) {
+        if (code.slug.indexOf('tracklist=false') > -1 && code.trackCount) {
             e.style.height = `${Math.round(this.bandcampAlbumHeight.header + (this.bandcampAlbumHeight.trackRow * code.trackCount) + this.bandcampAlbumHeight.bottomBar)}px`;
         }
         return e;
@@ -185,6 +203,7 @@ export const LazyMedia = {
         e.setAttribute('loading', 'lazy');
         e.setAttribute('src', this.slugTpl.youtubeVideo.replace('{SLUG}', code.slug));
         e.setAttribute('allowfullscreen', 'allowfullscreen');
+        e.setAttribute('playsinline', 'playsinline');
         return e;
     },
     bakeYoutubePlaylist(code) {
@@ -192,6 +211,7 @@ export const LazyMedia = {
         e.setAttribute('loading', 'lazy');
         e.setAttribute('src', this.slugTpl.youtubePlaylist.replace('{SLUG}', code.slug));
         e.setAttribute('allowfullscreen', 'allowfullscreen');
+        e.setAttribute('playsinline', 'playsinline');
         console.log('e :>> ', e);
         return e;
     },
