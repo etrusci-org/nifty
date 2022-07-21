@@ -3,12 +3,15 @@ declare(strict_types=1);
 
 
 /**
- * Get current client IP.
+ * Get the current client IP.
  *
- * @return string|bool  Client IP or false.
+ * Looks in $_SERVER REMOTE_ADDR, HTTP_CLIENT_IP, and HTTP_X_FORWARDED_FOR.
+ *
+ * @return string|bool  Client IP or false if there was none to get.
  */
-function clientIP(): string|bool {
+function getClientIP(): string|bool {
     $ip = false;
+
     if (isset($_SERVER['REMOTE_ADDR'])) {
         $ip = $_SERVER['REMOTE_ADDR'];
     }

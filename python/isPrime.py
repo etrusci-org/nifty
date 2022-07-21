@@ -1,3 +1,7 @@
+__all__ = [
+    'isPrime'
+]
+
 def isPrime(num):
     """Test a number for primality.
 

@@ -10,7 +10,7 @@ declare(strict_types=1);
  * @param string $end  String to add if truncation took place.
  * @return string  Original or truncated string.
  */
-function truncStr(string $str, int $length, string $end='...'): string {
+function truncateString(string $str, int $length, string $end='...'): string {
     $length = $length - strlen($end);
     return (strlen($str) > $length + strlen($end)) ? sprintf('%s%s', substr($str, 0, $length), $end) : $str;
 }
