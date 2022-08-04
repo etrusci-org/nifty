@@ -1,6 +1,12 @@
 *.code-workspace
+<<<<<<< Updated upstream
 __pycache__/
 0000/
 */test.*
 */package.json
 .bak
+=======
+__pycache__
+_test.*
+javascript/package.json
+>>>>>>> Stashed changes
