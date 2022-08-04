@@ -1,11 +1,3 @@
-/**
- * Convert seconds to a human readable duration format.
- *
- * @param {number} sec  Seconds to be converted. Negative numbers will be treated as 0 (zero).
- * @param {boolean} [padHMS=true]  Whether to pad hours, minutes and seconds < 10 with 0 (zero).
- * @param {tplType} [tpl={ prefix: '', d: '{d}d ', h: '{h}h ', m: '{m}m ', s: '{s}s', suffix: '' }]  Template to build the output string from.
- * @returns {string}  Converted duration.
- */
 type tplType = {
     prefix: string,
     d: string,
@@ -15,7 +7,16 @@ type tplType = {
     suffix: string
 }
 
-export function secToDHMS(sec: number, padHMS: boolean = true, tpl: tplType = { prefix: '', d: '{d}d ', h: '{h}h ', m: '{m}m ', s: '{s}s', suffix: '' }): string {
+
+/**
+ * Convert seconds to a human readable duration format.
+ *
+ * @param {number} sec  Seconds to be converted. Negative numbers will be treated as 0 (zero).
+ * @param {boolean} [padHMS=true]  Whether to pad hours, minutes and seconds < 10 with 0 (zero).
+ * @param {tplType} [tpl={ prefix: '', d: '{d}d ', h: '{h}h ', m: '{m}m ', s: '{s}s', suffix: '' }]  Template to build the output string from.
+ * @returns {string}  Converted duration string.
+ */
+export function secondsToDurationString(sec: number, padHMS: boolean = true, tpl: tplType = { prefix: '', d: '{d}d ', h: '{h}h ', m: '{m}m ', s: '{s}s', suffix: '' }): string {
     /**
      * Pad the start of a number with a specific amount of characters.
      *

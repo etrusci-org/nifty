@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 
 /**
- * Remove excess whitespace.
+ * Remove excess whitespace from a string.
  *
  * @param string $str  Input string.
  * @return string  String with normalized whitespace.
  */
-function normalizeSpaces(string $str): string {
+function normalizeWhitespace(string $str): string {
     return trim(preg_replace('/\s+/', ' ', $str));
 }
