@@ -6,13 +6,17 @@
 //
 // $MCT = new MixcloudTool();
 // $MCT->cacheDir = __DIR__.'/_test';
-// $MCT->cacheTTL = 60;
-//
+// $MCT->cacheTTL = 60; # seconds before getting fresh remote data
+// $MCT->cacheTTL = 0; # always remote data but store data also in cache file
+// $MCT->cacheTTL = -1; # disable caching
 // print_r($MCT);
-//
+
+// $data = $MCT->getData(apiURL: 'https://api.mixcloud.com/spartacus');
+// print_r($data);
+
 // $user = $MCT->getUser(user: 'spartacus');
 // print_r($user);
-//
+
 // $cloudcasts = $MCT->getCloudcasts(user: 'spartacus');
 // print_r($cloudcasts);
 // ----------------
@@ -37,7 +41,9 @@ class MixcloudTool {
                 $this->getData($data['paging']['next'], $cacheFile, $mergeKey);
             }
 
-            file_put_contents($cacheFile, json_encode($this->ram['data'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT), LOCK_EX);
+            if ($this->cacheTTL >= 0) {
+                file_put_contents($cacheFile, json_encode($this->ram['data'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT), LOCK_EX);
+            }
         }
         else {
             $data = file_get_contents($cacheFile);
