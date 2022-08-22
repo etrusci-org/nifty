@@ -3,20 +3,18 @@
 // WORK IN PROGRESS
 // ----------------
 // Usage:
+// require_once __DIR__.'/MixcloudTool.php';
 //
 // $MCT = new MixcloudTool();
-// $MCT->cacheDir = __DIR__.'/_test';
-// $MCT->cacheTTL = 60; # seconds before getting fresh remote data
-// $MCT->cacheTTL = 0; # always remote data but store data also in cache file
-// $MCT->cacheTTL = -1; # disable caching
+// $MCT->cacheDir = __DIR__.'/_test'; # absolute path to cache directory
+// $MCT->cacheTTL = 60; # seconds before getting fresh remote data. 0 = always remote data but store data also in cache file. -1 = disable caching.
+// $MCT->pagingLimit = 20; # 1-20
+// $MCT->pagingDelay = 150_000; # delay between paging results in microseconds
 // print_r($MCT);
-
-// $data = $MCT->getData(apiURL: 'https://api.mixcloud.com/spartacus');
-// print_r($data);
-
+//
 // $user = $MCT->getUser(user: 'spartacus');
 // print_r($user);
-
+//
 // $cloudcasts = $MCT->getCloudcasts(user: 'spartacus');
 // print_r($cloudcasts);
 // ----------------
@@ -26,7 +24,9 @@ declare(strict_types=1);
 class MixcloudTool {
     public string $apiBaseURL = 'https://api.mixcloud.com';
     public string $cacheDir = __DIR__;
-    public int $cacheTTL = 43200;
+    public int $cacheTTL = 43_200;
+    public int $pagingLimit = 20;
+    public int $pagingDelay = 150_000;
     protected array $ram = [];
 
 
@@ -38,6 +38,7 @@ class MixcloudTool {
             $this->ram['data'] = array_merge($this->ram['data'], ($mergeKey && isset($data[$mergeKey])) ? $data[$mergeKey] : $data);
 
             if (isset($data['paging']) && isset($data['paging']['next'])) {
+                usleep($this->pagingDelay);
                 $this->getData($data['paging']['next'], $cacheFile, $mergeKey);
             }
 
@@ -59,9 +60,9 @@ class MixcloudTool {
         $this->ram['data'] = [];
 
         $cacheFile = sprintf('%s/mixcloud-user-%s.json', $this->cacheDir, $user);
+        $apiURL = sprintf('%s/%s/?metadata=1', $this->apiBaseURL, $user);
 
-        $apiURL = sprintf('%s/%s', $this->apiBaseURL, $user);
-        $data = $this->getData($apiURL, cacheFile: $cacheFile);
+        $data = $this->getData($apiURL, $cacheFile);
 
         return $data;
     }
@@ -71,9 +72,9 @@ class MixcloudTool {
         $this->ram['data'] = [];
 
         $cacheFile = sprintf('%s/mixcloud-cloudcasts-%s.json', $this->cacheDir, $user);
+        $apiURL = sprintf('%s/%s/cloudcasts/?limit=%s&offset=0', $this->apiBaseURL, $user, $this->pagingLimit);
 
-        $apiURL = sprintf('%s/%s/cloudcasts/?limit=20&offset=0', $this->apiBaseURL, $user);
-        $data = $this->getData($apiURL, cacheFile: $cacheFile, mergeKey: 'data');
+        $data = $this->getData($apiURL, $cacheFile, 'data');
 
         return $data;
     }
