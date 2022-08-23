@@ -17,7 +17,6 @@ class MixcloudData {
     public string $patternShowURL = '%s/%s/%s/?metadata=1';
     public string $patternShowCacheFile = '%s/mixcloud-%s-show-%s.json';
     public int $pagingLimit = 20;
-    public int $pagingDelay = 150_000;
     protected array $ram = [];
 
 
@@ -39,7 +38,6 @@ class MixcloudData {
             $this->ram = array_merge($this->ram, ($mergeKey && isset($data[$mergeKey])) ? $data[$mergeKey] : $data);
 
             if (isset($data['paging']) && isset($data['paging']['next'])) {
-                usleep($this->pagingDelay);
                 $this->getData($data['paging']['next'], $cacheFile, $mergeKey);
             }
 
