@@ -6,18 +6,18 @@ declare(strict_types=1);
 
 
 class MixcloudData {
-    public string $baseURL = 'https://api.mixcloud.com';
     public string $cacheDir = __DIR__;
     public string $errorFile = __DIR__.'/errors.log';
-    public int $cacheTTL = 43_200;
-    public int $pagingLimit = 20;
-    public int $pagingDelay = 150_000;
+    public int $cacheTTL = 86400 * 3;
+    public string $baseURL = 'https://api.mixcloud.com';
     public string $patternUserURL = '%s/%s/?metadata=1';
     public string $patternUserCacheFile = '%s/mixcloud-%s-user.json';
     public string $patternCloudcastsURL = '%s/%s/cloudcasts/?limit=%s&offset=0';
     public string $patternCloudcastsCacheFile = '%s/mixcloud-%s-cloudcasts.json';
     public string $patternShowURL = '%s/%s/%s/?metadata=1';
     public string $patternShowCacheFile = '%s/mixcloud-%s-show-%s.json';
+    public int $pagingLimit = 20;
+    public int $pagingDelay = 150_000;
     protected array $ram = [];
 
 
@@ -81,7 +81,7 @@ class MixcloudData {
     }
 
 
-    public function getShow(string $user, string $slug) {
+    public function getShow(string $user, string $slug): array {
         $this->ram = [];
 
         $url = sprintf($this->patternShowURL, $this->baseURL, $user, $slug);
