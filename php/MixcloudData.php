@@ -5,7 +5,7 @@
 declare(strict_types=1);
 
 
-class MixcloudTool {
+class MixcloudData {
     public string $baseURL = 'https://api.mixcloud.com';
     public string $cacheDir = __DIR__;
     public string $errorFile = __DIR__.'/errors.log';
