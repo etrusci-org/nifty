@@ -1,7 +1,4 @@
 <?php
-// ----------------
-// WORK IN PROGRESS
-// ----------------
 declare(strict_types=1);
 
 
