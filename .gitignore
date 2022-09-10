@@ -1,4 +1,6 @@
 *.code-workspace
 __pycache__
+_test/
 _test.*
 javascript/package.json
+example/javascript/package.json
