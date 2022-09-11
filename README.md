@@ -6,10 +6,10 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
 ## Code
 
-### javascript
+### JavaScript
 
-- [addTargetToExtLinks.js](./javascript/addTargetToExtLinks.js)
-- [getFileExt.js](./javascript/getFileExt.js)
+- [addTargetToExtLinks.js](./javascript/addTargetToExtLinks.js) ([usage](./example/javascript/addTargetToExtLinks.md))
+- [getFileExt.js](./javascript/getFileExt.js) ([usage](./example/javascript/getFileExt.md))
 - [getPathBasename.js](./javascript/getPathBasename.js)
 - [getRandomArrayItem.js](./javascript/getRandomArrayItem.js)
 - [getRandomArrayKey.js](./javascript/getRandomArrayKey.js)
@@ -20,7 +20,7 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 - [Scur.js](./javascript/Scur.js)
 - [secondsToDurationString.js](./javascript/secondsToDurationString.js)
 
-### php
+### PHP
 
 - [DatabaseSQLite3.php](./php/DatabaseSQLite3.php) ([usage](./example/php/DatabaseSQLite3.md))
 - [getClientIP.php](./php/getClientIP.php) ([usage](./example/php/getClientIP.md))
@@ -37,11 +37,11 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 - [WebApp.php](./php/WebApp.php)
 - [WebRouter.php](./php/WebRouter.php) ([usage](./example/php/WebRouter.md))
 
-### python
+### Python
 
 - [isPrime.py](./python/isPrime.py) ([usage](./example/python/isPrime.md))
 
-### typescript
+### TypeScript
 
 - [addTargetToExtLinks.ts](./typescript/addTargetToExtLinks.ts)
 - [getFileExt.ts](./typescript/getFileExt.ts)
