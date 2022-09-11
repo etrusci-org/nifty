@@ -4,9 +4,11 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
 ---
 
-## Code
+## Library
 
 ### JavaScript
+
+Current dev version: see [tsconfig.json](./tsconfig.json)
 
 - [addTargetToExtLinks.js](./javascript/addTargetToExtLinks.js) ([usage](./example/javascript/addTargetToExtLinks.md))
 - [getFileExt.js](./javascript/getFileExt.js) ([usage](./example/javascript/getFileExt.md))
@@ -21,6 +23,8 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 - [secondsToDurationString.js](./javascript/secondsToDurationString.js) ([usage](./example/javascript/secondsToDurationString.md))
 
 ### PHP
+
+Current dev version: PHP 8.1.2
 
 - [DatabaseSQLite3.php](./php/DatabaseSQLite3.php) ([usage](./example/php/DatabaseSQLite3.md))
 - [getClientIP.php](./php/getClientIP.php) ([usage](./example/php/getClientIP.md))
@@ -39,9 +43,13 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
 ### Python
 
+Current dev version: Python 3.10.3
+
 - [isPrime.py](./python/isPrime.py) ([usage](./example/python/isPrime.md))
 
 ### TypeScript
+
+Current dev version: The TypeScript Compiler 4.6.2 (also see [tsconfig.json](./tsconfig.json))
 
 - [addTargetToExtLinks.ts](./typescript/addTargetToExtLinks.ts)
 - [getFileExt.ts](./typescript/getFileExt.ts)
@@ -57,7 +65,7 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
 ---
 
-## Language Docs
+## Language Documentation
 
 - JavaScript: <https://developer.mozilla.org/javascript>
 - PHP: <https://php.net/manual>
