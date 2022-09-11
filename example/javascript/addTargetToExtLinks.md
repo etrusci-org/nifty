@@ -8,29 +8,27 @@
 
 ```html
 <a href="page.html">local-link-1</a>
-<!-- expected:
-<a href="page.html">local-link-1</a>
+<!-- expected change:
+none
 -->
 
 <a href="https://mydomain.com/page.html">local-link-2</a>
-<!-- expected:
-<a href="https://mydomain.com/page.html">local-link-2</a>
+<!-- expected change:
+none
 -->
 
 <a href="https://example.org">remote-link-1</a>
-<!-- expected:
+<!-- expected change:
 <a href="https://example.org" target="_blank">remote-link-1</a>
 -->
 ```
 
-```html
-<script type="module">
-    import { addTargetToExtLinks } from "./addTargetToExtLinks.js";
+```javascript
+import { addTargetToExtLinks } from "./addTargetToExtLinks.js";
 
-    // on DOM loaded
-    addTargetToExtLinks()
+// on DOM loaded
+addTargetToExtLinks();
 
-    // or optionally override target and/or cssClass
-    // addTargetToExtLinks('_self', 'myCssClass');
-</script>
+// or optionally override target and/or add cssClass
+addTargetToExtLinks('_self', 'myCssClass');
 ```
