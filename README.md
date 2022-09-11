@@ -10,15 +10,15 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
 - [addTargetToExtLinks.js](./javascript/addTargetToExtLinks.js) ([usage](./example/javascript/addTargetToExtLinks.md))
 - [getFileExt.js](./javascript/getFileExt.js) ([usage](./example/javascript/getFileExt.md))
-- [getPathBasename.js](./javascript/getPathBasename.js)
-- [getRandomArrayItem.js](./javascript/getRandomArrayItem.js)
-- [getRandomArrayKey.js](./javascript/getRandomArrayKey.js)
-- [getRandomInteger.js](./javascript/getRandomInteger.js)
-- [isLucky.js](./javascript/isLucky.js)
-- [isPrime.js](./javascript/isPrime.js)
+- [getPathBasename.js](./javascript/getPathBasename.js) ([usage](./example/javascript/getPathBasename.md))
+- [getRandomArrayItem.js](./javascript/getRandomArrayItem.js) ([usage](./example/javascript/getRandomArrayItem.md))
+- [getRandomArrayKey.js](./javascript/getRandomArrayKey.js) ([usage](./example/javascript/getRandomArrayKey.md))
+- [getRandomInteger.js](./javascript/getRandomInteger.js) ([usage](./example/javascript/getRandomInteger.md))
+- [isLucky.js](./javascript/isLucky.js) ([usage](./example/javascript/isLucky.md))
+- [isPrime.js](./javascript/isPrime.js) ([usage](./example/javascript/isPrime.md))
 - [LazyMedia.js](./javascript/LazyMedia.js)
 - [Scur.js](./javascript/Scur.js)
-- [secondsToDurationString.js](./javascript/secondsToDurationString.js)
+- [secondsToDurationString.js](./javascript/secondsToDurationString.js) ([usage](./example/javascript/secondsToDurationString.md))
 
 ### PHP
 
