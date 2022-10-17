@@ -24,7 +24,7 @@
         {
             "label": "tsc-watch",
             "type": "shell",
-            "command": "tsc --watch -p ./tsconfig.json",
+            "command": "./tscwatch.sh",
             "options": {},
             "isBackground": true,
             "problemMatcher": [],
