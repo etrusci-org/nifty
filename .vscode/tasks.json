@@ -18,19 +18,14 @@
                 "isDefault": true
             },
             "runOptions": {
-                "runOn": "folderOpen"
+                "runOn": "default"
             }
         },
         {
             "label": "tsc-watch",
             "type": "shell",
-            "command": "./tscwatch.cmd",
-            "options": {
-                "shell": {
-                    "executable": "powershell.exe",
-                    "args": []
-                }
-            },
+            "command": "./tscwatch.sh",
+            "options": {},
             "isBackground": true,
             "problemMatcher": [],
             "presentation": {
