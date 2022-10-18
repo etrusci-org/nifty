@@ -24,7 +24,7 @@ Current dev version: see [tsconfig.json](./tsconfig.json)
 
 ### PHP
 
-Current dev version: PHP 8.1.2
+Current dev version: PHP 8.1.11
 
 - [DatabaseSQLite3.php](./php/DatabaseSQLite3.php) ([usage](./example/php/DatabaseSQLite3.md))
 - [getClientIP.php](./php/getClientIP.php) ([usage](./example/php/getClientIP.md))
@@ -43,13 +43,13 @@ Current dev version: PHP 8.1.2
 
 ### Python
 
-Current dev version: Python 3.10.3
+Current dev version: Python 3.9.2
 
 - [isPrime.py](./python/isPrime.py) ([usage](./example/python/isPrime.md))
 
 ### TypeScript
 
-Current dev version: The TypeScript Compiler 4.6.2 (also see [tsconfig.json](./tsconfig.json))
+Current dev version: The TypeScript Compiler 4.8.4 (also see [tsconfig.json](./tsconfig.json))
 
 - [addTargetToExtLinks.ts](./typescript/addTargetToExtLinks.ts)
 - [getFileExt.ts](./typescript/getFileExt.ts)
