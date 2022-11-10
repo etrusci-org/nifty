@@ -7,6 +7,10 @@
 
 ## Usage
 
+```html
+<div class="randomQuoteTyper"></div>
+```
+
 ```javascript
 import { RandomQuoteTyper } from "./RandomQuoteTyper.js";
 import { quotes } from './quotes.js';
