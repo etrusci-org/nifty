@@ -20,6 +20,7 @@ Current dev version: see [tsconfig.json](./tsconfig.json)
 - [isPrime.js](./javascript/isPrime.js) ([usage](./example/javascript/isPrime.md))
 - [LazyMedia.js](./javascript/LazyMedia.js)
 - [padNum.js](./javascript/padNum.js)
+- [RandomQuoteTyper.js](./javascript/RandomQuoteTyper.js) ([usage](./example/javascript/RandomQuoteTyper.md))
 - [Scur.js](./javascript/Scur.js)
 - [secondsToDurationString.js](./javascript/secondsToDurationString.js) ([usage](./example/javascript/secondsToDurationString.md))
 
@@ -62,6 +63,7 @@ Current dev version: The TypeScript Compiler 4.8.4 (also see [tsconfig.json](./t
 - [isPrime.ts](./typescript/isPrime.ts)
 - [LazyMedia.ts](./typescript/LazyMedia.ts)
 - [padNum.ts](./typescript/padNum.ts)
+- [RandomQuoteTyper.ts](./typescript/RandomQuoteTyper.ts)
 - [Scur.ts](./typescript/Scur.ts)
 - [secondsToDurationString.ts](./typescript/secondsToDurationString.ts)
 
