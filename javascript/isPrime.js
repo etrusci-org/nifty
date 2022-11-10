@@ -5,7 +5,6 @@
  *
  * @param {number} num  Number to test.
  * @returns {boolean}  Whether the number is a prime.
- *
  * @see https://en.wikipedia.org/wiki/Prime_numbers
  */
 export function isPrime(num) {
