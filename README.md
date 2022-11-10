@@ -19,12 +19,13 @@ Current dev version: see [tsconfig.json](./tsconfig.json)
 - [isLucky.js](./javascript/isLucky.js) ([usage](./example/javascript/isLucky.md))
 - [isPrime.js](./javascript/isPrime.js) ([usage](./example/javascript/isPrime.md))
 - [LazyMedia.js](./javascript/LazyMedia.js)
+- [padNum.js](./javascript/padNum.js)
 - [Scur.js](./javascript/Scur.js)
 - [secondsToDurationString.js](./javascript/secondsToDurationString.js) ([usage](./example/javascript/secondsToDurationString.md))
 
 ### PHP
 
-Current dev version: PHP 8.1.11
+Current dev version: PHP 8.1.12
 
 - [DatabaseSQLite3.php](./php/DatabaseSQLite3.php) ([usage](./example/php/DatabaseSQLite3.md))
 - [getClientIP.php](./php/getClientIP.php) ([usage](./example/php/getClientIP.md))
@@ -60,6 +61,7 @@ Current dev version: The TypeScript Compiler 4.8.4 (also see [tsconfig.json](./t
 - [isLucky.ts](./typescript/isLucky.ts)
 - [isPrime.ts](./typescript/isPrime.ts)
 - [LazyMedia.ts](./typescript/LazyMedia.ts)
+- [padNum.ts](./typescript/padNum.ts)
 - [Scur.ts](./typescript/Scur.ts)
 - [secondsToDurationString.ts](./typescript/secondsToDurationString.ts)
 
