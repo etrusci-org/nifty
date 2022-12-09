@@ -2,6 +2,9 @@
 
 Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
+[![jsDelivr hits](https://img.shields.io/jsdelivr/gh/hm/etrusci-org/nifty)](https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/)
+<https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/>
+
 ---
 
 ## Library
@@ -11,6 +14,7 @@ Code I keep for re-use. Nothing too fancy. I'm just lazy.
 Current dev version: see [tsconfig.json](./tsconfig.json)
 
 - [addTargetToExtLinks.js](./javascript/addTargetToExtLinks.js) ([usage](./example/javascript/addTargetToExtLinks.md))
+- [fyShuffle.js](./javascript/fyShuffle.js)
 - [getFileExt.js](./javascript/getFileExt.js) ([usage](./example/javascript/getFileExt.md))
 - [getPathBasename.js](./javascript/getPathBasename.js) ([usage](./example/javascript/getPathBasename.md))
 - [getRandomArrayItem.js](./javascript/getRandomArrayItem.js) ([usage](./example/javascript/getRandomArrayItem.md))
@@ -54,6 +58,7 @@ Current dev version: Python 3.9.2
 Current dev version: The TypeScript Compiler 4.8.4 (also see [tsconfig.json](./tsconfig.json))
 
 - [addTargetToExtLinks.ts](./typescript/addTargetToExtLinks.ts)
+- [fyShuffle.ts](./typescript/fyShuffle.ts)
 - [getFileExt.ts](./typescript/getFileExt.ts)
 - [getPathBasename.ts](./typescript/getPathBasename.ts)
 - [getRandomArrayItem.ts](./typescript/getRandomArrayItem.ts)
