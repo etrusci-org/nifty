@@ -2,6 +2,9 @@
 
 Code I keep for re-use. Nothing too fancy. I'm just lazy.
 
+[![jsDelivr hits](https://img.shields.io/jsdelivr/gh/hm/etrusci-org/nifty)](https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/)
+<https://cdn.jsdelivr.net/gh/etrusci-org/nifty@main/>
+
 ---
 
 ## Library
