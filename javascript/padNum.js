@@ -7,7 +7,7 @@
  * @returns {string}  Padded number.
  */
 export function padNum(num, width = 2, filler = '0') {
-    let str = num.toString();
+    const str = num.toString();
     if (str.length >= width) {
         return str;
     }

@@ -23,7 +23,7 @@ export const RandomQuoteTyper = {
         this.quote = this.queue.pop() || null;
         if (!this.quote)
             return;
-        let quoteStr = `"${this.quote.text}" — ${this.quote.author}`.split('');
+        const quoteStr = `"${this.quote.text}" — ${this.quote.author}`.split('');
         if (!this.target)
             return;
         this.target.innerHTML = ``;
