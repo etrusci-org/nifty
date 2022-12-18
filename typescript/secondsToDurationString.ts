@@ -25,8 +25,8 @@ export function secondsToDurationString(sec: number, padHMS: boolean = true, tpl
      * @param {string} filler  Character to be used for padding.
      * @returns {string}  Padded number.
      */
-    let padNum = (num: number, width: number = 2, filler: string = '0'): string => {
-        let str = num.toString()
+    const padNum = (num: number, width: number = 2, filler: string = '0'): string => {
+        const str = num.toString()
         if (str.length >= width) {
             return str
         }
@@ -35,10 +35,10 @@ export function secondsToDurationString(sec: number, padHMS: boolean = true, tpl
 
     sec = Math.max(0, sec)
 
-    let d = Math.floor(sec / (3600 * 24))
-    let h = Math.floor(sec % (3600 * 24) / 3600)
-    let m = Math.floor(sec % 3600 / 60)
-    let s = Math.floor(sec % 60)
+    const d = Math.floor(sec / (3600 * 24))
+    const h = Math.floor(sec % (3600 * 24) / 3600)
+    const m = Math.floor(sec % 3600 / 60)
+    const s = Math.floor(sec % 60)
 
     let out = ''
 

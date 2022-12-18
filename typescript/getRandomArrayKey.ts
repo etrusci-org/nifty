@@ -4,7 +4,7 @@
  * @param {array} arr  Array to chose the keys from.
  * @returns {number | null}  Random array key or null if the input array is empty.
  */
-export function getRandomArrayKey(arr: any[]): number | null {
+export function getRandomArrayKey(arr: unknown[]): number | null {
     if (arr.length == 0) {
         return null
     }

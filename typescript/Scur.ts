@@ -15,7 +15,7 @@ export const Scur: ScurInterface = {
     ob(data) {
         let hash = this._r(btoa(this._r(this.s + data)))
 
-        let dump: number[] = []
+        const dump: number[] = []
         hash.split('').forEach((v) => {
             dump.push(v.charCodeAt(0))
         })
@@ -26,12 +26,12 @@ export const Scur: ScurInterface = {
 
 
     deob(data) {
-        let dump: string[] = []
+        const dump: string[] = []
         data.split('|').forEach((v) => {
             dump.push(String.fromCharCode(parseInt(v)))
         })
 
-        let text = this._r(
+        const text = this._r(
             atob(
                 this._r(
                     dump.join('')
@@ -49,7 +49,7 @@ export const Scur: ScurInterface = {
 
 
     deobElements() {
-        let nodeList = document.querySelectorAll('[data-scur]')
+        const nodeList = document.querySelectorAll('[data-scur]')
         if (nodeList instanceof NodeList) {
             nodeList.forEach(node => {
                 if (

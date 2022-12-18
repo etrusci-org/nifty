@@ -6,7 +6,7 @@
  * @see https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
  */
 export function fyShuffle(arr) {
-    let copy = [...arr];
+    const copy = [...arr];
     for (let i = copy.length - 1; i > 0; i--) {
         const y = Math.floor(Math.random() * i);
         const z = copy[i];

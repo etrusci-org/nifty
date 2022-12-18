@@ -5,8 +5,8 @@
  * @returns {array}  The shuffled array.
  * @see https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
  */
-export function fyShuffle(arr: any[]): any[] {
-    let copy = [...arr]
+export function fyShuffle(arr: unknown[]): unknown[] {
+    const copy = [...arr]
 
     for (let i = copy.length - 1; i > 0; i--) {
         const y = Math.floor(Math.random() * i)

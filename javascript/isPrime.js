@@ -17,7 +17,7 @@ export function isPrime(num) {
     if (num % 2 == 0) {
         return false;
     }
-    let divLast = Math.round(Math.pow(num, 0.5)) + 1;
+    const divLast = Math.round(Math.pow(num, 0.5)) + 1;
     let divCurrent = 3;
     while (divCurrent <= divLast) {
         if (num % divCurrent == 0) {

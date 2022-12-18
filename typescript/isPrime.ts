@@ -20,7 +20,7 @@ export function isPrime(num: number): boolean {
         return false
     }
 
-    let divLast = Math.round(num ** 0.5) + 1
+    const divLast = Math.round(num ** 0.5) + 1
     let divCurrent = 3
     while (divCurrent <= divLast) {
         if (num % divCurrent == 0) {
